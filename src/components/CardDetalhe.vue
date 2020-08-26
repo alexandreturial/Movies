@@ -279,7 +279,7 @@ created(){
         }
 
         #rating{
-            width: 8rem;
+            width: 12%;
             margin: 7% 85%
         }
         .poster img{
