@@ -2,17 +2,26 @@
   <div>  
     <Topo title="Movies"/>
     <main >
-      <Busca/>
-      <router-link  to="/detalhe" style="text-decoration: none; color: inherit;"> 
-        <Filmes/>
-        <Filmes/>
-        <Filmes/>
-      </router-link>
-
-     
+       <form id="app" v-on:submit.prevent="checkForm" >
+          <Busca >
+             <slot slot="search">
+                <input type="search" id="busca" name="buscar" v-model="busca" placeholder="Busque um filme por nome, ano ou gênero" >
+             </slot>
+          </Busca>
+       </form>
+        <div >
+           <Filmes :filme="movies"/>
+        </div>
+      
     </main>
     <footer>
-      <Paginate/>
+      <Paginate>
+        <slot slot="botao">
+          <button  v-for="(page, index) in totalPages" :key="index" v-on:click="Changepage(page)" href="#"  v-bind:class="{'page-item':true, 'active':(page === currentPage)}">
+              <span>{{page}}</span>
+          </button>
+        </slot>
+      </Paginate>
     </footer>
   </div>
 </template>
@@ -22,13 +31,42 @@ import Topo from '../components/Topo'
 import Busca from '../components/Busca.vue'
 import Filmes from '../components/Filmes.vue'
 import Paginate from '../components/Paginate.vue'
+import listFilmes from '../services/config'
 
 export default {
+  created() {
+   
+  },
+  data(){
+    return{
+      movies:[],
+      busca: '',
+      totalPages:0,
+      currentPage: 1
+    }
+  },
   components: {
     Topo,
     Busca,
     Filmes,
     Paginate
+  },
+ methods: {
+    checkForm() {
+         listFilmes.getAllMovies(this.busca, comics => {
+         this.movies = comics.data.results;
+         this.totalPages = comics.data.total_pages
+         
+        });
+    },
+    Changepage (event) {
+      console.log(event);
+      listFilmes.getMoreMovies(this.movies, event, movies => {
+         this.movies = movies.data.results;
+          console.log(movies);
+        });
+       this.currentPage = event   
+    }
   }
 }
 </script>

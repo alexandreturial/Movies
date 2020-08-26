@@ -1,8 +1,9 @@
 <template>
     <div class="navigation">
-        <button  v-for="(page, index) in 5" :key="index" v-on:click="Changepage(page)" href="#"  v-bind:class="{'page-item':true, 'active':(page === currentPage)}">
-            <span>{{page}}</span>
-        </button>
+        
+        <slot name="botao">
+        
+     </slot>
     </div>
 </template>
 
@@ -27,7 +28,9 @@ export default {
 
 <style>
     .navigation{
-         display: inline-block;
+         display: flex;
+         overflow-x: scroll;
+         width: 500px;
     }
     .navigation button {
         color: #116193;
@@ -56,5 +59,15 @@ export default {
         border: solid 3px #01dfdf;
         color: #01dfdf;
         font: 500 1.7rem 'Abel', sans-serif;
+    }
+     /* Hide scrollbar for Chrome, Safari and Opera */
+     .navigation::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .navigation {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     }
 </style>

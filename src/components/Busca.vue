@@ -1,13 +1,17 @@
 <template>
     <div class="form-container">
-       <input type="text" placeholder="Busque um filme por nome, ano ou gênero">
+     <slot name="search">
+        
+     </slot>
+         
+     
     </div>
 </template>
 
 <script>
 
 export default {
- 
+  
 }
 </script>
 

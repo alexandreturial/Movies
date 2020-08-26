@@ -7,7 +7,6 @@ Vue.use(VueRouter);
 import Home from './page/Home.vue'
 import Detalhe from './page/Detalhe.vue'
 
-
 const router = new VueRouter({
   mode: 'history',
   routes:[
@@ -21,7 +20,8 @@ const router = new VueRouter({
     },
     {
       path:'/detalhe', 
-      component: Detalhe
+      component: Detalhe,
+      props: true
     }
   ]
 })

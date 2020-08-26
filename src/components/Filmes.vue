@@ -1,29 +1,31 @@
 <template>
     <div class="container">
-        <div class="card">
-            <div class="poster">
-                <img src="https://uauposters.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/3/130620180226-uau-posters-filmes-thor-ragnarok.jpg" alt="poster">
-            </div>
-            <div class="dados">
-                <!-- <Topo/> -->
-               <div class="navbar">
-                    <h1 class="title">Thor:Ragnarok</h1>
-                </div>
-                <div class="corpo">
-                    <div class="header-card">
-                        <CardNumber numero="74%"/>
-                        <h4> 25/10/2017</h4>
+        <router-link :to="{ path: 'detalhe', params: { movieId: id } }"  style="text-decoration: none; color: inherit;"> 
+
+            <div class="card" v-for="(movie, index) in filme" :key="index" v-on:click="selectMovie(movie.id)">
+                    <div class="poster">
+                        <img :src="'https://image.tmdb.org/t/p/original/'+movie.poster_path" alt="poster">
                     </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec dolor lorem. Fusce at mollis massa. Curabitur quis fermentum nibh. Morbi eget tristique massa. Integer vitae sagittis sapien, nec finibus ipsum. Nullam varius, elit vitae posuere tempus, orci lectus facilisis lectus, at efficitur dui est non diam.
-                    </p>
-                    <div class="footer-card">
-                        <ButtonGenero/>
+                    <div class="dados">
+                        <!-- <Topo/> -->
+                    <div class="navbar">
+                        <div class="text">
+                                <p class="title">{{movie.title}}</p>
+                        </div>
+                        </div>
+                        <div class="corpo">
+                            <div class="header-card">
+                                <CardNumber :numero="movie.vote_average.toString()"/>
+                                <h4>{{movie.release_date}}</h4>
+                            </div>
+                            <p>{{movie.overview}}</p>
+                            <div class="footer-card">
+                                <ButtonGenero :generoIds="movie.genre_ids"/>
+                            </div>
+                        </div>
                     </div>
-                </div>
             </div>
-        </div>
-        
+        </router-link>
     </div>
 </template>
 
@@ -31,11 +33,24 @@
 import ButtonGenero from './ButtonGenero.vue'
 import CardNumber from './CardNumber.vue'
 
+
 export default {
+props:['filme'],
+
 components: {
     ButtonGenero,
     CardNumber
-  }
+  },
+data(){
+    return{
+        id:0
+    }
+},
+methods: {
+    selectMovie(movieId) {
+        this.id =  movieId;
+    }
+}
 }
 </script>
 
@@ -62,19 +77,34 @@ components: {
     }
     .navbar {
         background: #116193;
+        
     }
-    .navbar h1{
+    .text{
+        margin-left: 27% !important;
+        overflow-x: scroll;
+    }
+     /* Hide scrollbar for Chrome, Safari and Opera */
+     .text::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .text {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    }
+    .navbar p{
         margin: 0%;
+       
     }
     .title{
+        width: 200vw;
         display: flex;  
         justify-content: start;  
-        padding: 1rem 1rem 0rem;
+        padding: 1rem 0rem 0rem;
         font: 500 1.8rem 'Abel', sans-serif;
         color: #01dfdf;
         letter-spacing: 1px;
-        margin-left: 20% !important;
-        
     }
     .corpo .header-card{
         display: flex;
@@ -86,11 +116,10 @@ components: {
          font: 500 1rem 'Lato', sans-serif;
     }
     .corpo > p{
-        
         padding: 1rem;
         margin-top: -7%;
         text-align: start;
-        height: 5rem;
+        height: 2rem;
         overflow: hidden;
         font: 500 0.8rem 'Lato', sans-serif;
         color: #989898;
@@ -98,7 +127,7 @@ components: {
         display: flex;
     }
      /* Hide scrollbar for Chrome, Safari and Opera */
-     .button::-webkit-scrollbar {
+     .corpo::-webkit-scrollbar {
         display: none;
     }
 
@@ -112,7 +141,7 @@ components: {
         height: 100%;
         object-fit: cover;
     }
-    @media(min-width: 700px){
+    @media(min-width: 00px){
         .card{
             background: #ebebeb;
             margin: 2rem 0rem;
@@ -126,15 +155,20 @@ components: {
         main{
             margin: 0rem 15rem;
         }
+        .text{
+            margin-left: 5rem !important;
+            overflow-x: scroll;
+        }
          .title{
             display: flex;  
             justify-content: start;  
-            padding: 1rem 1rem 0rem;
+            padding: 1rem 0rem 0rem;
             font: 500 1.8rem 'Abel', sans-serif;
             color: #01dfdf;
             letter-spacing: 1px;
-            margin-left: 10% !important;
+           
         }
+        
         .poster img{
             width: 100%;
             height: 100%;

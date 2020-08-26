@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
+    <div class="container" >
         <div class="title">
-            <h2>Thor: Ragnarok</h2>
-            <h4>25/10/2017</h4>
+            <h2>{{detalhe.title}}</h2>
+            <h4>{{detalhe.release_date}}</h4>
         </div>
         <div class="card"> 
             <div class="dados">
@@ -11,8 +11,8 @@
                         <h3>Sinopse</h3>
                         <hr>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec dolor lorem. Fusce at mollis massa. Curabitur quis fermentum nibh. Morbi eget tristique massa. Integer vitae sagittis sapien, nec finibus ipsum. Nullam varius, elit vitae posuere tempus, orci lectus facilisis lectus, at efficitur dui est non diam.
-                         </p>
+                            {{detalhe.overview}}                         
+                        </p>
                     </div>
                      <div class="info">
                         <h3>Informações</h3>
@@ -20,39 +20,39 @@
                         <ul class="info-itens">
                             <li>
                                 <h5>Situação</h5>
-                                 <p>Lançando</p>
+                                 <p>{{detalhe.status}}</p>
                             </li>
                              <li>
-                                <h5>Situação</h5>
-                                 <p>Lançando</p>
+                                <h5>Idioma</h5>
+                                 <p>{{detalhe.spoken_languages[0].name}}</p>
                             </li>
                              <li>
-                                <h5>Situação</h5>
-                                 <p>Lançando</p>
+                                <h5>Duração</h5>
+                                 <p>{{detalhe.runtime}}</p>
                             </li>
                              <li>
-                                <h5>Situação</h5>
-                                 <p>Lançando</p>
+                                <h5>Orçamento</h5>
+                                 <p>{{detalhe.budget}}</p>
                             </li>
                              <li>
-                                <h5>Situação</h5>
-                                 <p>Lançando</p>
+                                <h5>Receita</h5>
+                                 <p>{{detalhe.revenue}}</p>
                             </li>
                              <li>
-                                <h5>Situação</h5>
-                                 <p>Lançando</p>
+                                <h5>Lucro</h5>
+                                 <p>{{detalhe.revenue - detalhe.budget}}</p>
                             </li>
                         </ul>
                     </div>
                 <div class="footer-card">
                     <div id="genero">
-                        <ButtonGenero/>
+                        
                     </div>
                     
                     <div id="rating">
                          <p>
                             <span>
-                                75%
+                                {{detalhe.vote_average}}
                             </span>
                         </p>
                     </div>
@@ -60,19 +60,24 @@
                 </div>
             </div>
              <div class="poster">
-                <img src="https://uauposters.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/3/130620180226-uau-posters-filmes-thor-ragnarok.jpg" alt="poster">
+                <img :src="'https://image.tmdb.org/t/p/original/'+detalhe.poster_path" alt="poster">
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import ButtonGenero from '../components/ButtonGenero'
+// import ButtonGenero from '../components/ButtonGenero'
 
 export default {
+props:['detalhe'],
 components: {
-    ButtonGenero
-  }
+    // ButtonGenero
+  },
+
+created(){
+     console.log(this.detalhe);
+}
 }
 </script>
 
@@ -187,7 +192,7 @@ components: {
         margin: 1rem 0rem;
     }
     #rating{
-        width: 4.4rem;
+        width: 3.8rem;
         margin: 12% 60%;
     }
      #rating p{
@@ -203,7 +208,7 @@ components: {
     }
     #rating p span{
         border-radius: 50%;
-        padding: 0.8rem 0.5rem;
+        padding: 0.5rem 0.5rem;
         border: solid 3px #01dfdf;
         color: #01dfdf;
         font: 500 1rem 'Abel', sans-serif;

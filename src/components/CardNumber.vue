@@ -29,7 +29,7 @@ export default {
     }
     p span{
         border-radius: 50%;
-        padding: 0.75rem 0.5rem;
+        padding: 0.8rem 0.8rem;
         border: solid 3px #01dfdf;
         color: #01dfdf;
         font: 500 1.2rem 'Abel', sans-serif;
