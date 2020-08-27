@@ -1,16 +1,14 @@
 <template>
         <p>
             <span>
-                {{numero}}
+                {{numero *10}}%
             </span>
         </p>
 </template>
 
 <script>
 export default {
-    props:{
-        numero: String,
-    }
+    props:['numero']
 }
 </script>
 
@@ -29,7 +27,7 @@ export default {
     }
     p span{
         border-radius: 50%;
-        padding: 0.8rem 0.8rem;
+        padding: 1rem 0.8rem;
         border: solid 3px #01dfdf;
         color: #01dfdf;
         font: 500 1.2rem 'Abel', sans-serif;

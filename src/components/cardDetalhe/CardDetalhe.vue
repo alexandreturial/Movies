@@ -2,7 +2,7 @@
     <div class="container" >
         <div class="title">
             <h2>{{detalhe.title}}</h2>
-            <h4>{{detalhe.release_date}}</h4>
+            <h4>{{detalhe.release_date.split('-').reverse().join('/')}}</h4>
         </div>
         <div class="card"> 
             <div class="dados">
@@ -24,37 +24,41 @@
                             </li>
                              <li>
                                 <h5>Idioma</h5>
-                                 <p>{{detalhe.spoken_languages['0'].name}}</p>
+                                 <p>{{detalhe.spoken_languages[0].name}}</p>
                             </li>
                              <li>
                                 <h5>Duração</h5>
-                                 <p>{{detalhe.runtime}}</p>
+                                 <p>{{(detalhe.runtime/60) | currency('', 2, { decimalSeparator: 'H ' })}} min</p>
                             </li>
                              <li>
                                 <h5>Orçamento</h5>
-                                 <p>{{detalhe.budget}}</p>
+                                 <p>{{detalhe.budget | currency('R$ ', 2, { thousandsSeparator: '.',  decimalSeparator: ',' })}}</p>
                             </li>
                              <li>
                                 <h5>Receita</h5>
-                                 <p>{{detalhe.revenue}}</p>
+                                 <p>{{detalhe.revenue | currency('R$ ', 2, { thousandsSeparator: '.',  decimalSeparator: ',' })}}</p>
                             </li>
                              <li>
                                 <h5>Lucro</h5>
-                                 <p>{{detalhe.revenue - detalhe.budget}}</p>
+                                 <p>{{(detalhe.revenue - detalhe.budget) | currency('R$ ', 2, { thousandsSeparator: '.',  decimalSeparator: ',' })}}</p>
                             </li>
                         </ul>
                     </div>
                 <div class="footer-card">
-                    <div id="genero">
-                        
+                    <div id="genero" class="button">
+                        <button v-for="(genero, index) in detalhe.genres" :key="index"> 
+                              {{genero.name}}
+                        </button>
                     </div>
-                    
                     <div id="rating">
-                         <p>
-                            <span>
-                                {{detalhe.vote_average}}
-                            </span>
-                        </p>
+                        <div>
+                            <p>
+                                <span>
+                                    {{detalhe.vote_average *10}}%
+                                </span>
+                            </p>
+                        </div>
+                         
                     </div>
                 </div>
                 </div>
@@ -67,22 +71,21 @@
 </template>
 
 <script>
-// import ButtonGenero from '../components/ButtonGenero'
-
+//  import ButtonGenero from '../components/ButtonGenero'
 export default {
 props:['detalhe'],
 components: {
     // ButtonGenero
-  },
+    // const strReverse = this.detalhe.split('').reverse().join('');
+    // console.log(strReverse);
+},
 
-created(){
-     console.log(this.detalhe);
-}
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+ @import '../../components/botao/botao.css';
     .container{
         align-items: center;
         justify-content: center;
@@ -177,10 +180,12 @@ created(){
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
     }
+    
     .info h5{
         font: 500 1.1rem 'Abel', sans-serif;
         margin: 0rem 0.5rem;
         color:  #116193;
+        text-align: center;
     }
     .info p{
         font: 500 0.8rem 'Abel', sans-serif;
@@ -188,12 +193,9 @@ created(){
          color:#777777;
         text-align: center;
     }
-    .footer-card{
-        margin: 1rem 0rem;
-    }
+    
     #rating{
-        width: 3.8rem;
-        margin: 12% 60%;
+        justify-content: flex-end;
     }
      #rating p{
         margin: 0%;
@@ -202,13 +204,14 @@ created(){
         margin-top: -1.5rem;
         margin-left: 1rem;
         background: #116193;
-        display: flex;  
-        justify-content: center;  
+        margin-left: 75%;
+        margin-top: 2%;
+        display: inline-flex;
         
     }
     #rating p span{
         border-radius: 50%;
-        padding: 0.5rem 0.5rem;
+        padding: 0.7rem 0.5rem;
         border: solid 3px #01dfdf;
         color: #01dfdf;
         font: 500 1rem 'Abel', sans-serif;
@@ -220,7 +223,7 @@ created(){
         object-fit: cover;
     }
    
-    @media(min-width: 700px){
+    @media(min-width: 800px){
         .card{
             background: #ebebeb;
             margin: 0rem;
@@ -259,36 +262,37 @@ created(){
             margin: 0rem 0.5rem;
             color:  #116193;
         }
-          #rating p{
+        .footer-card{
+            margin: 1rem 0rem;
+        }
+        #rating p{
         margin: 0%;
         border: solid 4px #116193;
         border-radius: 50%;
         margin-top: -1.5rem;
         margin-left: 1rem;
         background: #116193;
-        display: flex;  
-        justify-content: center;  
-        
+        margin-left: 85%;
+        margin-top: 2%;
+        display: inline-flex;  
+       
         }
         #rating p span{
             border-radius: 50%;
-            padding: 1rem 0.5rem;
+            padding: 1.5rem 1rem;
             border: solid 3px #01dfdf;
             color: #01dfdf;
             font: 500 3rem 'Abel', sans-serif;
         }
 
         #rating{
-            width: 12%;
-            margin: 7% 85%
+            justify-content: flex-end;
         }
         .poster img{
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-      
-        
         
     }
 </style>

@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import Topo from '../components/Topo'
-import Busca from '../components/Busca.vue'
-import Filmes from '../components/Filmes.vue'
-import Paginate from '../components/Paginate.vue'
+import Topo from '../components/topo/Topo'
+import Busca from '../components/busca/Busca.vue'
+import Filmes from '../components/filmes/Filmes.vue'
+import Paginate from '../components/paginate/Paginate.vue'
 import listFilmes from '../services/config'
 
 export default {
@@ -56,14 +56,13 @@ export default {
          listFilmes.getAllMovies(this.busca, comics => {
          this.movies = comics.data.results;
          this.totalPages = comics.data.total_pages
-         
+         console.log(this.movies);
         });
     },
     Changepage (event) {
-      console.log(event);
-      listFilmes.getMoreMovies(this.movies, event, movies => {
+      
+      listFilmes.getMoreMovies(this.busca, event, movies => {
          this.movies = movies.data.results;
-          console.log(movies);
         });
        this.currentPage = event   
     }

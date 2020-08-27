@@ -1,22 +1,27 @@
 <template>
-  <div class="player">  
-        <iframe 
+  <div class="player" >  
+   
+    <div v-for="(trailer, index) in trailers" :key="index">
+      
+      <iframe 
         width="450" 
         height="300" 
-        src="https://www.youtube.com/embed/ODqPGttjjOY" 
+        :src="'https://www.youtube.com/embed/'+trailer.key" 
         frameborder="0" 
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>    
+      </iframe>   
+    </div>
+         
   </div>
 </template>
 
 <script>
 
 export default {
-
+props:['trailers']
 }
 </script>
-
+ 
 <style>
 .player{
     margin: 2rem 0rem;

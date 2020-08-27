@@ -3,18 +3,17 @@
     <Topo title="Movies"/>
     <main>
       
-      
-        <CardDetalhe :detalhe="detail"/>
+        <CardDetalhe :detalhe="detail" />
        
-        <Video/>
+        <Video :trailers="videos"/>
     </main>
   </div>
 </template>
 
 <script>
-import Topo from '../components/Topo'
-import CardDetalhe from '../components/CardDetalhe'
-import Video from '../components/Video.vue'
+import Topo from '../components/topo/Topo.vue'
+import CardDetalhe from '../components/cardDetalhe/CardDetalhe.vue'
+import Video from '../components/video/Video.vue'
 import listFilmes from '../services/config'
 
 export default {
@@ -28,14 +27,19 @@ export default {
 
   data(){
     return{
-        detail:[]
+        detail:[],
+        videos:[]
     }
   },
   created(){
      listFilmes.getDetailMovies(this.movieId, movie => {
        
        this.detail = movie.data;
-        
+      
+       
+      });
+      listFilmes.getMoviesTrailer(this.movieId, trailer => {
+       this.videos = trailer.data.results;
       });
   }
 }

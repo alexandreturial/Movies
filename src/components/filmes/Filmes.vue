@@ -15,8 +15,8 @@
                         </div>
                         <div class="corpo">
                             <div class="header-card">
-                                <CardNumber :numero="movie.vote_average.toString()"/>
-                                <h4>{{movie.release_date}}</h4>
+                                <CardNumber :numero="movie.vote_average"/>
+                                <h4>{{movie.release_date.split('-').reverse().join('/')}}</h4>
                             </div>
                             <p>{{movie.overview}}</p>
                             <div class="footer-card">
@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import ButtonGenero from './ButtonGenero.vue'
-import CardNumber from './CardNumber.vue'
+import ButtonGenero from '../botao/ButtonGenero'
+import CardNumber from '../cardNumber/CardNumber'
 
 
 export default {

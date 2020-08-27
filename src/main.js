@@ -4,8 +4,14 @@ import VueRouter from 'vue-router';
 import App from './App.vue';
 Vue.use(VueRouter);
 
+import Vue2Filters from 'vue2-filters'
+Vue.use(Vue2Filters)
+
 import Home from './page/Home.vue'
 import Detalhe from './page/Detalhe.vue'
+
+
+
 
 const router = new VueRouter({
   mode: 'history',

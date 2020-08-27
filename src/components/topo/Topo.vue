@@ -1,7 +1,9 @@
 <template>
     <nav class="navbar">
         <div class="navbar">
-            <h1 class="title">{{title}}</h1>
+             <router-link :to="{ path: '/'}"  style="text-decoration: none; color: inherit;"> 
+                <h1 class="title">{{title}}</h1>
+            </router-link>
         </div>
     </nav>
 </template>
