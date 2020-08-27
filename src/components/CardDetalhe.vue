@@ -24,7 +24,7 @@
                             </li>
                              <li>
                                 <h5>Idioma</h5>
-                                 <p>{{detalhe.spoken_languages[0].name}}</p>
+                                 <p>{{detalhe.spoken_languages['0'].name}}</p>
                             </li>
                              <li>
                                 <h5>Duração</h5>

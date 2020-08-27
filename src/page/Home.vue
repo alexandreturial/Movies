@@ -16,9 +16,9 @@
     </main>
     <footer>
       <Paginate>
-        <slot slot="botao">
+        <slot slot="botao" v-if="totalPages > 1">
           <button  v-for="(page, index) in totalPages" :key="index" v-on:click="Changepage(page)" href="#"  v-bind:class="{'page-item':true, 'active':(page === currentPage)}">
-              <span>{{page}}</span>
+              <span >{{page}}</span>
           </button>
         </slot>
       </Paginate>

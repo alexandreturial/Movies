@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <router-link :to="{ path: 'detalhe', params: { movieId: id } }"  style="text-decoration: none; color: inherit;"> 
+        <router-link :to="{ path: 'detalhe/'+id}"  style="text-decoration: none; color: inherit;"> 
 
             <div class="card" v-for="(movie, index) in filme" :key="index" v-on:click="selectMovie(movie.id)">
                     <div class="poster">
@@ -47,8 +47,8 @@ data(){
     }
 },
 methods: {
-    selectMovie(movieId) {
-        this.id =  movieId;
+    selectMovie(movie) {
+        this.id =  movie;
     }
 }
 }

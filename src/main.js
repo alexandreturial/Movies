@@ -19,8 +19,9 @@ const router = new VueRouter({
       component: Home
     },
     {
-      path:'/detalhe', 
+      path:'/detalhe/:movieId', 
       component: Detalhe,
+      name: 'detalhe',
       props: true
     }
   ]

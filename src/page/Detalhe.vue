@@ -2,7 +2,10 @@
   <div>  
     <Topo title="Movies"/>
     <main>
+      
+      
         <CardDetalhe :detalhe="detail"/>
+       
         <Video/>
     </main>
   </div>
@@ -15,20 +18,22 @@ import Video from '../components/Video.vue'
 import listFilmes from '../services/config'
 
 export default {
-  // props: ['movieId'],
+   props: ['movieId'],
+  
   components: {
     Topo,
     CardDetalhe,
     Video
   },
+
   data(){
     return{
         detail:[]
     }
   },
   created(){
-    this.movieId = 503880;
-     listFilmes.getDetailMovies('603', movie => {
+     listFilmes.getDetailMovies(this.movieId, movie => {
+       
        this.detail = movie.data;
         
       });
