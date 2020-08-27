@@ -10,7 +10,7 @@ input{
     width: 100%;
     border-radius: 50rem;
     background: #ebebeb;
-    color:#9ebbcc;
+    color:var( --var-background-card);
     cursor: pointer;
     font-size: 1rem;
     font-family: 'Abel', sans-serif;
@@ -20,5 +20,5 @@ input{
 }
 
 ::-webkit-input-placeholder {
-  color: #9ebbcc;
+  color: var( --var-background-card);
 }

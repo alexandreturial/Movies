@@ -71,6 +71,7 @@ export default {
 </script>
 
 <style scoped>
+@import '../assets/global.css';
 main{
   align-items: center;
   justify-content: center;

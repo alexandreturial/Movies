@@ -14,11 +14,11 @@ scrollbar-width: none;  /* Firefox */
 }
 .button button{
    margin: 0rem 0.5rem;
-   background: #ffffff;
-   color: #518cb0;
+   background: var(--var-background);
+   color: var(--var-genres-color);
    border-radius: 30px;
    padding: 0 0.8rem;
-   border: solid 1px #518cb0;     
+   border: solid 1px var(--var-genres-color);    
    font-weight: bold;
    height: 2rem;
    line-height: 1rem;

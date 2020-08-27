@@ -62,10 +62,10 @@ methods: {
         text-decoration: none;
         border: none;
         outline:none;
-       
+       background: var(--var-background);
     }
-   .card{
-        background: #ebebeb;
+   .card{ 
+        background: var(--var-background-card);
         margin: 2rem 0rem;
         display: grid;
         grid-template-rows: 250px 1fr;
@@ -75,8 +75,11 @@ methods: {
             "dados";
            
     }
+    .card .dados{
+        margin: 0;
+    }
     .navbar {
-        background: #116193;
+        background: var(--var-background-nav);
         
     }
     .text{
@@ -103,7 +106,7 @@ methods: {
         justify-content: start;  
         padding: 1rem 0rem 0rem;
         font: 500 1.8rem 'Abel', sans-serif;
-        color: #01dfdf;
+        color: var(--var-title-color);
         letter-spacing: 1px;
     }
     .corpo .header-card{
@@ -112,7 +115,7 @@ methods: {
     }
     .corpo .header-card h4{
         margin: 0% 4%;
-        color: #939393;
+        color: var(--var-date-color);
          font: 500 1rem 'Lato', sans-serif;
     }
     .corpo > p{
@@ -122,7 +125,7 @@ methods: {
         height: 2rem;
         overflow: hidden;
         font: 500 0.8rem 'Lato', sans-serif;
-        color: #989898;
+        color: var( --var-txt-color);
         overflow-y: scroll;
         display: flex;
     }
@@ -143,7 +146,7 @@ methods: {
     }
     @media(min-width: 00px){
         .card{
-            background: #ebebeb;
+            background: var(--var-background-card);;
             margin: 2rem 0rem;
             display: grid;
             grid-template-rows: 300px 1fr;
@@ -164,7 +167,7 @@ methods: {
             justify-content: start;  
             padding: 1rem 0rem 0rem;
             font: 500 1.8rem 'Abel', sans-serif;
-            color: #01dfdf;
+            color: var(--var-title-color);
             letter-spacing: 1px;
            
         }
@@ -176,7 +179,7 @@ methods: {
         }
         .corpo .header-card h4{
             margin: 0% 1.5%;
-            color: #939393;
+            color: var(--var-date-color);
             font: 500 1rem 'Lato', sans-serif;
         }
         .corpo > p{
@@ -186,7 +189,7 @@ methods: {
             height: 5rem;
             overflow: hidden;
             font: 500 1rem 'Lato', sans-serif;
-            color: #989898;
+            color: var( --var-txt-color);
          }
     }
 </style>

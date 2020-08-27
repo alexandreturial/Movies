@@ -33,7 +33,7 @@ export default {
          width: 500px;
     }
     .navigation button {
-        color: #116193;
+        color: var(--var-background-nav);
         float: left;
         padding: 8px 16px;
         text-decoration: none;
@@ -46,19 +46,20 @@ export default {
     .active{
         padding: 0rem !important;
         margin: 0%;
-        border: solid 2px #116193 !important;
+        border: solid 2px var(--var-background-nav) !important;
         border-radius: 50%;
-        background: #116193 !important;
+        background: var(--var-background-nav) !important;
         display: flex;  
         justify-content: center;  
         margin-bottom: 0.2rem;
     }
     .active span{
+        width: 20px;
         border-radius: 50%;
-        padding: 0rem 0.7rem;
-        border: solid 3px #01dfdf;
-        color: #01dfdf;
-        font: 500 1.7rem 'Abel', sans-serif;
+        padding: 8px 8px;
+        border: solid 3px var(--var-title-color);
+        color: var(--var-title-color);
+        font: 500 1.2rem 'Abel', sans-serif;
     }
      /* Hide scrollbar for Chrome, Safari and Opera */
      .navigation::-webkit-scrollbar {
