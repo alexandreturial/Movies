@@ -5,7 +5,7 @@
        <form id="app" v-on:submit.prevent="checkForm" >
           <Busca >
              <slot slot="search">
-                <input type="search" id="busca" name="buscar" v-model="busca" placeholder="Busque um filme por nome, ano ou gênero" >
+                <input type="search" id="busca" name="buscar" v-model="busca" placeholder="Busque um filme por nome" >
              </slot>
           </Busca>
        </form>
