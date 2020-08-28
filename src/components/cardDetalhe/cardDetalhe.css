@@ -20,6 +20,11 @@
     font: 500 1.5rem 'Abel', sans-serif;
     color:  var(--var-background-nav);;
     margin-left: 5%;
+    margin: 0;
+    display: flex;  
+    justify-content: left;  
+    padding: 0;
+    letter-spacing: 0px;
 }
 .titleDetail h4{
     font: 500 0.8rem 'Lato', sans-serif;
@@ -154,6 +159,11 @@ scrollbar-width: none;  /* Firefox */
         color:  var(--var-background-nav);;
         margin-left: 3%;
         font-weight: bold;
+        margin: 0 2rem;
+        display: flex;  
+        justify-content: left;  
+        padding: 0;
+        letter-spacing: 0px;
     }
     .titleDetail h4{
         font: 500 1.2rem 'Lato', sans-serif;

@@ -9,3 +9,12 @@
     --var-background-title-detail: #e6e6e6;
     --var-sinopse-color: #777777;
 }
+h2{
+    margin: 0;
+    display: flex;  
+    justify-content: center;  
+    padding: 0.4rem;
+    font: 500 2rem 'Abel', sans-serif;
+    color: var(--var-title-color);
+    letter-spacing: 1px;
+}

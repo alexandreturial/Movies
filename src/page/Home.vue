@@ -12,7 +12,15 @@
         <div >
            <Filmes :filme="movies"/>
         </div>
-      
+        <div v-if="movies.length > 0 && movies != 'filmes'">
+            <Filmes :filme="movies"/>
+          </div>
+          <div v-else-if="movies == 'filmes'">
+            <h2>Busque por um filme</h2>
+          </div>
+          <div v-else>
+            <h2>Nenhum filme pode ser encontrado</h2>
+          </div>
     </main>
     <footer>
       <Paginate>
@@ -39,7 +47,7 @@ export default {
   },
   data(){
     return{
-      movies:[],
+      movies: 'filmes',
       busca: '',
       totalPages:0,
       currentPage: 1
